@@ -1,0 +1,15 @@
+{
+  "name": "week9_hw",
+  "version": "1.0.0",
+  "description": "readMe generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Robert Filkin",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "inquirer": "^6.5.0"
+  }
+}
