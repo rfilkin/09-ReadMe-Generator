@@ -4,7 +4,30 @@ const util = require("util");
 const axios = require("axios");
 
 const writeFileAsync = util.promisify(fs.writeFile);
+
 var profile_info = [];
+
+const license_MIT = `MIT License
+
+Copyright (c) 2020 Robert Filkin
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.`
 
 function prompt_user(){
     //asks user for info
@@ -36,11 +59,6 @@ function prompt_user(){
         },
         {
           type: "input",
-          name: "license",
-          message: "What is the license?"
-        },
-        {
-          type: "input",
           name: "contributing",
           message: "What should contributors know?"
         },
@@ -48,11 +66,6 @@ function prompt_user(){
           type: "input",
           name: "tests",
           message: "Which tests should be run?"
-        },
-        {
-          type: "input",
-          name: "questions",
-          message: "Where should people contact for questions?"
         }
     ])
 }
@@ -74,6 +87,7 @@ async function grab_GitHub_Profile(username){
     return `# ${data.project_title}
 
 ## Description 
+![version](https://img.shields.io/badge/version-1.0.0-green)
 ${data.description}
 
 ## Table of Contents
@@ -91,7 +105,7 @@ ${data.installation}
 ${data.usage}
 
 ## License
-${data.license}
+${license_MIT}
 
 ## Contributing
 ${data.contributing}
@@ -100,11 +114,11 @@ ${data.contributing}
 ${data.tests}
 
 ## Questions
-${data.questions}
+If you have any questions please contact me, Robert Filkin, at the email below:
 
 ![Profile photo](${profile_info[0]})
 
-Email: ${profile_info[1]}`;
+Email: rfilkin17@gmail.com`;
   }
   
   // prompt_user()
