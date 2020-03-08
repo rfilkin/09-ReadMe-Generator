@@ -1,33 +1,34 @@
+# ReadMe_generator
 
-    # a
+## Description 
+An app to generate ReadMe files for GitHub repositories
 
-    UserName: rfilkin
-    
-    ## Description 
-    s
+## Table of Contents
+1. Installation
+2. Usage
+3. License
+4. Contributing
+5. Tests
+6. Questions
 
-    ## TOC
-    d
+## Installation:
+clone the repository, run "npm install" to get the needed files, then type "node index.js" in the terminal
 
-    ## Installation:
-    gf
+## Usage
+run "node index.js" in the terminal from the repository's location on your computer
 
-    ## Usage
-    
+## License
+MIT
 
-    ## License
-    jj
+## Contributing
+this is a studen project, please don't break it
 
-    ## Contributing
-    k
+## Tests
+passed
 
-    ## Tests
-    f
+## Questions
+contact me at the email below
 
-    ## Questions
-    s
+![Profile photo](https://avatars3.githubusercontent.com/u/12621320?v=4)
 
-    undefined
-
-    undefined
-    
+Email: null

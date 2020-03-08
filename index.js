@@ -26,11 +26,6 @@ function prompt_user(){
         },
         {
           type: "input",
-          name: "TOC",
-          message: "What is the table of contents?"
-        },
-        {
-          type: "input",
           name: "installation",
           message: "What are the installation instructions?"
         },
@@ -47,17 +42,17 @@ function prompt_user(){
         {
           type: "input",
           name: "contributing",
-          message: "Who are the contributors?"
+          message: "What should contributors know?"
         },
         {
           type: "input",
           name: "tests",
-          message: "Tests?"
+          message: "Which tests should be run?"
         },
         {
           type: "input",
           name: "questions",
-          message: "Questions?"
+          message: "Where should people contact for questions?"
         }
     ])
 }
@@ -66,7 +61,7 @@ async function grab_GitHub_Profile(username){
     const queryUrl = `https://api.github.com/users/${username}`;
     console.log(queryUrl);
 
-    axios.get(queryUrl).then(function(response) {
+    await axios.get(queryUrl).then(function(response) {
       //console.log(response.data);
       profile_info.push(response.data.avatar_url);
       console.log("check here " + response.data.avatar_url)
@@ -76,52 +71,67 @@ async function grab_GitHub_Profile(username){
 
   function generate_ReadMe(data) {
 
-    return `
-    # ${data.project_title}
+    return `# ${data.project_title}
 
-    UserName: ${data.username}
-    
-    ## Description 
-    ${data.description}
+## Description 
+${data.description}
 
-    ## TOC
-    ${data.TOC}
+## Table of Contents
+1. Installation
+2. Usage
+3. License
+4. Contributing
+5. Tests
+6. Questions
 
-    ## Installation:
-    ${data.installation}
+## Installation:
+${data.installation}
 
-    ## Usage
-    ${data.usage}
+## Usage
+${data.usage}
 
-    ## License
-    ${data.license}
+## License
+${data.license}
 
-    ## Contributing
-    ${data.contributing}
+## Contributing
+${data.contributing}
 
-    ## Tests
-    ${data.tests}
+## Tests
+${data.tests}
 
-    ## Questions
-    ${data.questions}
+## Questions
+${data.questions}
 
-    ${profile_info[0]}
+![Profile photo](${profile_info[0]})
 
-    ${profile_info[1]}
-    `;
+Email: ${profile_info[1]}`;
   }
   
-  prompt_user()
-  .then(function(data){
-      grab_GitHub_Profile(data.username);
-      
-      const read_text = generate_ReadMe(data); //prepares the ReadMe text
+  // prompt_user()
+  // .then(function(data){
+  //     grab_GitHub_Profile(data.username);
 
-      return writeFileAsync("README.md", read_text); //writes the ReadMe to an extrenal file
-  })
-  .then(function() {
-      console.log("Successfully wrote to ReadMe"); //confirms that everything worked correctly
-  })
-  .catch(function(err) {
-      console.log(err); //indicates if something went wrong
-  });
+  //     const read_text = generate_ReadMe(data); //prepares the ReadMe text
+
+  //     return writeFileAsync("README.md", read_text); //writes the ReadMe to an extrenal file
+  // })
+  // .then(function() {
+  //     console.log("Successfully wrote to ReadMe"); //confirms that everything worked correctly
+  // })
+  // .catch(function(err) {
+  //     console.log(err); //indicates if something went wrong
+  // });
+
+  async function init(){
+    const data = await prompt_user();
+    console.log("done");
+    console.log(data);
+
+    await grab_GitHub_Profile(data.username);
+
+    const read_text = generate_ReadMe(data); //prepares the ReadMe text
+
+    return writeFileAsync("README.md", read_text); //writes the ReadMe to an extrenal file
+  };
+
+  init();
