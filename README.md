@@ -1,8 +1,9 @@
-# w
+# ReadMe Generator
 
 ## Description 
 ![version](https://img.shields.io/badge/version-1.0.0-green)
-e
+
+This is an app to generate ReadMe files for GitHub repositories
 
 ## Table of Contents
 1. Installation
@@ -13,10 +14,10 @@ e
 6. Questions
 
 ## Installation:
-r
+clone the repository to your machine. navigate to the directory and start up git bash, then run "npm install" to install the necessary files.
 
 ## Usage
-t
+while in the directory of the repository, start up git bash and run "node index.js" to run the application. It will ask you several questions that will be used to build the ReadMe.
 
 ## License
 MIT License
@@ -42,10 +43,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Contributing
-s
+This is a student project, so please don't break it.
 
 ## Tests
-a
+If you add a new feature, please add tests to ensure that it actually works.
 
 ## Questions
 If you have any questions please contact me, Robert Filkin, at the email below:
