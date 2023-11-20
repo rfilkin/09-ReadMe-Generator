@@ -9,7 +9,7 @@
   "author": "Robert Filkin",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.2",
+    "axios": "^1.6.0",
     "inquirer": "^6.5.0"
   }
 }
